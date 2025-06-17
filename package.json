@@ -1,0 +1,33 @@
+{
+  "name": "monitoring-extension",
+  "displayName": "Monitoring Extension",
+  "description": "Plugin system for monitoring tools like Grafana",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onCommand:extension.activateMonitoring"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.activateMonitoring",
+        "title": "Activate Monitoring Extension"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.70.0"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}
