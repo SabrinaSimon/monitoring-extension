@@ -6,18 +6,23 @@
   "engines": {
     "vscode": "^1.70.0"
   },
-  "activationEvents": [
-    "onCommand:extension.activateMonitoring"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.activateMonitoring",
-        "title": "Activate Monitoring Extension"
-      }
-    ]
-  },
+ "activationEvents": [
+  "onCommand:extension.activateMonitoring",
+  "onCommand:extension.registerPlugin"
+],
+"contributes": {
+  "commands": [
+    {
+      "command": "extension.activateMonitoring",
+      "title": "Activate Monitoring Extension"
+    },
+    {
+      "command": "extension.registerPlugin",
+      "title": "Register New Monitoring Plugin"
+    }
+  ]
+}
+},
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./"
