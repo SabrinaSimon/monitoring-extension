@@ -1,0 +1,27 @@
+┌────────────────────────────┐
+│   VS Code Extension        │
+│ - Loads config             │
+│ - Activates command        │
+└────────────────────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│     Plugin Manager         │
+│ - Registers plugins        │
+│ - Manages lifecycle        │
+└────────────────────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│    Plugin Interface        │
+│ (Generic Handshake)        │
+│ - initialize(config:       │
+│     Record<string, any>)   │
+│ - fetchAlerts()            │
+└────────────────────────────┘
+     ▲                 ▲
+     │                 │
+┌────────────┐   ┌────────────┐
+│ Grafana    │   │ Kibana     │
+│ Plugin     │   │ Plugin     │
+└────────────┘   └────────────┘
