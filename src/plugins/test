@@ -1,0 +1,15 @@
+Generic Handshake Interface
+A unified contract (PluginInterface) with flexible config (Record<string, any>) enabling consistent communication across all monitoring plugins.
+
+Dynamic Plugin Management
+The PluginManager dynamically registers, initializes, and manages multiple plugins based on user configuration — supporting extensibility.
+
+Secure VS Code Settings Integration
+Plugin configurations are stored and managed securely within VS Code settings, avoiding file system dependencies or security risks.
+
+Extensible Plugin Implementations
+Easily add new monitoring tools (e.g., Grafana, Kibana) by implementing the generic interface without changing core extension logic.
+
+User-Driven Configuration UI
+Users can interactively configure plugins via VS Code commands and input prompts, streamlining setup without manual config file edits.
+
