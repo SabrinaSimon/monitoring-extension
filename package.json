@@ -1,0 +1,56 @@
+{
+  "name": "monitoring-extension",
+  "displayName": "Monitoring Extension",
+  "description": "Plugin-based monitoring system for Grafana and Kibana.",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onCommand:monitoring.configurePlugin"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "monitoring.configurePlugin",
+        "title": "Monitoring: Configure Plugin"
+      }
+    ],
+    "configuration": {
+      "title": "Monitoring Plugin",
+      "properties": {
+        "monitoring.plugins": {
+          "type": "array",
+          "description": "Monitoring plugin configurations",
+          "default": [],
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "url": { "type": "string" },
+                  "apiKey": { "type": "string" },
+                  "alertRuleId": { "type": "string" },
+                  "viewUrl": { "type": "string" }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ."
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.70.0"
+  }
+}
