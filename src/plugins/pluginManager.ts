@@ -1,4 +1,6 @@
-import { MonitoringPlugin } from './pluginInterface';
+import { MonitoringPlugin } from "./pluginInterface";
+import { GrafanaPlugin } from "./grafanaPlugin";
+import { KibanaPlugin } from "./kibanaPlugin";
 
 export interface MonitoringPluginDefinition {
   name: string;
@@ -10,21 +12,21 @@ export class PluginManager {
   private plugins: MonitoringPlugin[] = [];
 
   registerPlugin(def: MonitoringPluginDefinition) {
-    let pluginClass;
+    let plugin: MonitoringPlugin;
+
     switch (def.type.toLowerCase()) {
-      case 'grafana':
-        pluginClass = require('./grafanaPlugin').GrafanaPlugin;
+      case "grafana":
+        plugin = new GrafanaPlugin();
         break;
-      case 'kibana':
-        pluginClass = require('./kibanaPlugin').KibanaPlugin;
+      case "kibana":
+        plugin = new KibanaPlugin();
         break;
       default:
-        throw new Error(`Unknown plugin type: ${def.type}`);
+        throw new Error(`Unsupported plugin type: ${def.type}`);
     }
-    
-    const instance: MonitoringPlugin = new pluginClass();
-    instance.initialize(def.options);
-    this.plugins.push(instance);
+
+    plugin.initialize(def.options);
+    this.plugins.push(plugin);
   }
 
   getRegisteredPlugins(): MonitoringPlugin[] {
